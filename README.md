@@ -34,3 +34,21 @@ observedElement.off('enter', handleEnter)
 
 ## API
 ...
+
+---
+
+## Recipes
+
+#### Only listen once
+
+```javascript
+const observedElement = ay(document.querySelector('.onlyOnce'))
+
+// Second argument of listener function is the registered instance,
+// so you can call .off to cancel listening
+const handleEnter = (el, instance) => {
+  instance.off('enter', handleEnter)
+}
+
+observedElement.on('enter', handleEnter)
+```
