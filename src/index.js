@@ -64,6 +64,11 @@ class ObserverRegistry {
          }
       }
    }
+
+   remove (el) {
+      this.registry = this.registry.filter(r => r.target !== el)
+      this.observer.unobserve(el)
+   }
 }
 
 export default ObserverRegistry
