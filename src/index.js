@@ -71,4 +71,10 @@ class ObserverRegistry {
    }
 }
 
-export default ObserverRegistry
+export default (options) => {
+   const Observer = new ObserverRegistry(options)
+   return (el) => {
+      const instance = Observer.add(el)
+      return instance
+   }
+}
